@@ -7,21 +7,24 @@ class Deck:
 
     """        spade    heart    diamond    club    """
     __suits = ['\u2660', "\u2665", "\u2666", "\u2663"]
-    __ranks = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q",
-               "K", "A"]
 
+    """the actual deck"""
     cards = []
 
     def __init__(self):
-        self.cards = createDeck()
-
-    def createDeck():
-        """use a simple list comprehension to combine the two lists and
-        create an entire deck"""
-        return [(suit + rank) for suit in __suits for rank in __ranks]
-
-    def shuffle():
-
+        self.cards = self.createDeck()
 
     def __str__(self):
-        print cards
+        return "\nCards : {}".format(self.cards)
+
+    def __repr__(self):
+        return "\n<Deck(cards={}>".format(self.cards)
+
+    def createDeck(self):
+        """use a simple list comprehension to combine the two lists and
+        create the entire 52 card deck"""
+        return [Card(suit, rank) for suit in self.__suits for rank in
+                range(1, 14)]
+
+    def shuffle():
+        """"""
