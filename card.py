@@ -13,14 +13,14 @@ class Card:
     """rank is int internally and is translated to char when requested"""
     rank = 0
 
-    """default to hearts (this is always overridden by the constructor)"""
+    """default to hearts (this is overridden by the constructor)"""
     suit = Suits.hearts
 
     def __init__(self, suit, rank):
         self.suit = suit
         self.rank = rank
 
-    def __str__(self):
+    def __repr__(self):
         """we build the two dictionaries here, because the only use for the
         string representation of the letters and suits is displaying the card
         to the user. The rest of the application only cares about the int and
