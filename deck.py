@@ -1,4 +1,5 @@
 from card import Card
+from card import Suits
 
 
 class Deck:
@@ -21,9 +22,9 @@ class Deck:
         return "\n<Deck(cards={}>".format(self.cards)
 
     def createDeck(self):
-        """use a simple list comprehension to combine the two lists and
-        create the entire 52 card deck"""
-        return [Card(suit, rank) for suit in self.__suits for rank in
+        """use a simple list comprehension to combine the suits enum and an
+        integer range and create the entire 52 card deck"""
+        return [Card(suit, rank) for suit in Suits for rank in
                 range(1, 14)]
 
     def shuffle():
