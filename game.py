@@ -13,7 +13,7 @@ class Game:
     cant_play_players = []
 
     """create a stock pile and a descard pile. deque is used to get a LIFO
-    data structure to represent stack of cards"""
+    data structure to represent a stack of cards"""
     stock_pile = deque()
     discard_pile = deque()
 
@@ -62,9 +62,6 @@ class Game:
             if(card is not None):
                 self.discard_pile.append(card)
                 print('{} plays {}'.format(player.name, card))
-            # check if we have one card left and report if we do
-            if(len(player.cards) == 1):
-                print('{} has one card remaining!'.format(player.name))
             # check if we have one card left and report if we do
             if(len(player.cards) == 0):
                 print('{} has won!'.format(player.name))
