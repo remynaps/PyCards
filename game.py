@@ -24,7 +24,7 @@ class Game:
         # first we shuffle the deck
         self.deck.shuffle()
         # then we give every player his/her cards
-        self.init_players(self.deck)
+        self.deal_cards(self.deck)
         # and finally we split the remaining cards in the piles
         self.create_piles(self.deck, self.stock_pile, self.discard_pile)
 
@@ -33,11 +33,14 @@ class Game:
             self.tick()
             time.sleep(0.5)
 
-    def init_players(self, deck):
+    def deal_cards(self, deck):
         # hand every player seven cards from the deck
         for player in self.players:
+            player_cards = []
             for x in range(7):
-                player.cards.append(deck.pop())
+                player_cards.append(deck.pop())
+            player.cards = player_cards
+            print('{} has been dealt: {}'.format(player.name, player.cards))
 
     def create_piles(self, deck, stock_pile, discard_pile):
         # split remaining cards in the deck among the piles
@@ -49,7 +52,7 @@ class Game:
     def tick(self):
         for player in self.players:
             # querie player for a card
-            card = player.play_card(self.discard_pile[-1])
+            card = player.play_card(self.discard_pile[-1], self.stock_pile)
             if(card is not None):
                 self.discard_pile.append(card)
                 print('{} plays {}'.format(player.name, card))
