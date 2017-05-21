@@ -10,10 +10,10 @@ class Suits(Enum):
 
 class Card:
 
-    """rank is int internally and is translated to char when requested"""
+    # rank is int internally and is translated to char when requested
     rank = 0
 
-    """default to hearts (this is overridden by the constructor)"""
+    # default to hearts (this is overridden by the constructor)
     suit = Suits.hearts
 
     def __init__(self, suit, rank):
@@ -21,7 +21,7 @@ class Card:
         self.rank = rank
 
     def __eq__(self, other):
-        """check if suit and rank are equal"""
+        # check if suit and rank are equal
         return self.suit == other.suit and self.rank == other.rank
 
     def __repr__(self):
@@ -34,13 +34,13 @@ class Card:
         these are cards whose rank is not a number"""
         specials = {1: 'A', 11: 'J', 12: 'Q', 13: 'K'}
 
-        """build a dictionary to handle the suits."""
+        # build a dictionary to handle the suits.
         suits = {Suits.spades: '\u2660',
                  Suits.hearts: '\u2665',
                  Suits.diamonds: '\u2666',
                  Suits.clubs: '\u2663'}
 
-        """retrieve the string representation of the suit and the rank"""
+        # retrieve the string representation of the suit and the rank
         letter = specials.get(self.rank, str(self.rank))
         suit = suits.get(self.suit, str(self.suit))
 
