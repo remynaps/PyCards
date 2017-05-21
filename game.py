@@ -29,8 +29,9 @@ class Game:
         self.create_piles(self.deck, self.stock_pile, self.discard_pile)
 
     def run(self):
-        while True:
-            self.tick()
+        playing = True
+        while playing:
+            playing = self.tick()
             time.sleep(0.5)
 
     def deal_cards(self, deck):
@@ -56,3 +57,13 @@ class Game:
             if(card is not None):
                 self.discard_pile.append(card)
                 print('{} plays {}'.format(player.name, card))
+            # check if we have one card left and report if we do
+            if(len(player.cards) == 1):
+                print('{} has one card remaining!'.format(player.name))
+            # check if we have one card left and report if we do
+            if(len(player.cards) == 0):
+                print('{} has won!'.format(player.name))
+                # end game
+                return False
+        # keep playing
+        return True
