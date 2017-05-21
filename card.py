@@ -20,9 +20,13 @@ class Card:
         self.suit = suit
         self.rank = rank
 
+    def __eq__(self, other):
+        """check if suit and rank are equal"""
+        return self.suit == other.suit and self.rank == other.rank
+
     def __repr__(self):
         """we build the two dictionaries here, because the only use for the
-        string representation of the letters and suits is displaying the card
+        string representation of the ranks and suits is displaying the card
         to the user. The rest of the application only cares about the int and
         the enum representation"""
 
