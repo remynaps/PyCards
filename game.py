@@ -21,9 +21,11 @@ class Game:
         self.players.append(Player("Birdperson"))
         self.players.append(Player("Goldenfold"))
 
-        # shuffle the deck and split the cards into the piles
+        # first we shuffle the deck
         self.deck.shuffle()
+        # then we give every player his/her cards
         self.init_players(self.deck)
+        # and finally we split the remaining cards in the piles
         self.create_piles(self.deck, self.stock_pile, self.discard_pile)
 
     def run(self):
@@ -50,4 +52,4 @@ class Game:
             card = player.play_card(self.discard_pile[-1])
             if(card is not None):
                 self.discard_pile.append(card)
-                print('Player {} played "{}!"'.format(player.name, card))
+                print('{} plays {}'.format(player.name, card))
