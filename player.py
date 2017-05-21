@@ -20,9 +20,6 @@ class Player:
                              top_card.suit) | (card.rank == top_card.rank))
             # take that card
             self.cards.remove(play_card)
-            # check if we have one card left and report if we do
-            if(len(self.cards) == 1):
-                print('{} has one card remaining!'.format(self.name))
             return play_card
         except Exception:
             return self.take_card(stock_pile)

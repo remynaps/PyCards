@@ -63,6 +63,9 @@ class Game:
                 self.discard_pile.append(card)
                 print('{} plays {}'.format(player.name, card))
             # check if we have one card left and report if we do
+            if(len(player.cards) == 1):
+                print('{} has one card remaining!'.format(player.name))
+            # check if we have one card left and report if we do
             if(len(player.cards) == 0):
                 print('{} has won!'.format(player.name))
                 # end game
