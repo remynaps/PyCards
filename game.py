@@ -23,9 +23,9 @@ class Game:
 
         # first we shuffle the deck
         self.deck.shuffle()
-        # then we give every player his/her cards
+        # then we hand every player his/her cards
         self.deal_cards(self.deck)
-        # and finally we split the remaining cards in the piles
+        # and finally we split the remaining cards into the piles
         self.create_piles(self.deck, self.stock_pile, self.discard_pile)
 
     def run(self):
