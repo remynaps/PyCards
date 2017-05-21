@@ -49,6 +49,8 @@ class Game:
             stock_pile.append(card)
         # add the top card from the stock pile to the discard pile
         discard_pile.append(stock_pile.pop())
+        # index -1 is fastest way to peek top of deque
+        print('Top card is: {}'.format(discard_pile[-1]))
 
     def tick(self):
         for player in self.players:
