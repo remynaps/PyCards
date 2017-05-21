@@ -31,20 +31,14 @@ class Game:
         # and finally we split the remaining cards into the piles
         self.create_piles(self.deck, self.stock_pile, self.discard_pile)
 
-    def run(self):
-        playing = True
-        while playing:
-            playing = self.tick()
-            if(len(self.cant_play_players) == len(self.players)):
-                playing = False
-                print('No one can play anymore. Ending game')
-
     def deal_cards(self, deck):
         # hand every player seven cards from the deck
         for player in self.players:
             player_cards = []
             for x in range(7):
+                # pop 7 cards from the deck and append them to new list
                 player_cards.append(deck.pop())
+            # actually hand the cards to the player
             player.cards = player_cards
             print('{} has been dealt: {}'.format(player.name, player.cards))
 
@@ -78,3 +72,11 @@ class Game:
                 return False
         # keep playing
         return True
+
+    def run(self):
+        playing = True
+        while playing:
+            playing = self.tick()
+            if(len(self.cant_play_players) == len(self.players)):
+                playing = False
+                print('No one can play anymore. Ending game')
