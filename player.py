@@ -3,7 +3,7 @@
 class Player:
 
     name = "default"
-
+    cant_play = False
     # order dos not matter for the player so normal list will do
     cards = []
 
@@ -28,9 +28,13 @@ class Player:
         # skip turn if no cards left on stock pile
         if(len(stock_pile) < 1):
             print('{} skipping turn. Stock pile too small'.format(self.name))
+            """flow control to avoid a situation where game keeps going if
+            no one can play"""
+            self.cant_play = True
             return
         # take a card from the stock pile
         new_card = stock_pile.pop()
+        self.cant_play = False
         # add the card to our own cards
         self.cards.append(new_card)
         print('{} doesnt have a suitable card. took card: {}'

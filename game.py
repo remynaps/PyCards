@@ -1,13 +1,16 @@
 from collections import deque
 from player import Player
 from deck import Deck
-import time
 
 
 class Game:
 
     players = []
     deck = Deck()
+
+    """flow control to avoid a situation where game keeps going when
+    no one can play"""
+    cant_play_players = []
 
     """create a stock pile and a descard pile. deque is used to get a LIFO
     data structure to represent stack of cards"""
@@ -32,7 +35,9 @@ class Game:
         playing = True
         while playing:
             playing = self.tick()
-            time.sleep(0.5)
+            if(len(self.cant_play_players) == len(self.players)):
+                playing = False
+                print('No one can play anymore. Ending game')
 
     def deal_cards(self, deck):
         # hand every player seven cards from the deck
@@ -54,6 +59,10 @@ class Game:
 
     def tick(self):
         for player in self.players:
+            # check if the player can still place cards
+            if(player.cant_play and player not in self.cant_play_players):
+                self.cant_play_players.append(player)
+
             # querie player for a card
             card = player.play_card(self.discard_pile[-1], self.stock_pile)
             if(card is not None):
